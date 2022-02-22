@@ -1,0 +1,27 @@
+//传参需要复制内存空间，速度慢耗时长
+//第一种
+void print1(Stu s)
+{
+    printf("name:%s\n ",s.name);
+    printf("sex:%s\n",s.sex);
+    printf("tele:%s\n",s.tele);
+    printf("age:%d\n",s.age);
+
+}
+//指针传参只需要创建4个或者8个字节的空间大小在返回指向的内存
+//第二种
+void print2(Stu* s)
+{
+    printf("name:%s\n",s->name);
+    printf("sex:%s\n",s->sex);
+    printf("tele:%s\n",s->tele);
+    printf("age:%d\n",s->age);
+
+}
+int main()
+{
+    Stu s={"张三","男","18844464281",28};
+    print1(s);
+    print2(&s);
+    return 0;
+}
