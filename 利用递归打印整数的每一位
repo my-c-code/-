@@ -1,0 +1,19 @@
+//利用递归打印整数的每一位
+#include<stdio.h>
+int print(int a)
+{
+   if(a>9)
+    {
+        print(a/10);
+    }
+  printf("%d ",a%10);
+   
+}
+int main()
+{
+    int a;
+    printf("请输入你要打印的数字\n");
+    scanf("%d",&a);
+ print(a);
+    return 0;
+}
