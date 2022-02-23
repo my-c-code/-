@@ -1,0 +1,37 @@
+//给出计算斐波那些数的算法，分别用递归和非递归算法实现，并给出两种算法的时间复杂度。
+//非递归
+//第一个数加上第二个数的和等于第三个数
+#include <stdio.h>
+// 
+//int main()
+//{
+//    int i, n, t1 = 0, t2 = 1, nextTerm;
+// 
+//    printf("输出几项: ");
+//    scanf("%d", &n);
+// 
+//    printf("斐波那契数列: ");
+// 
+//    for (i = 1; i <= n; ++i)
+//    {
+//        printf("%d, ", t1);
+//        nextTerm = t1 + t2;
+//        t1 = t2;
+//        t2 = nextTerm;
+//    }
+//    return 0;
+//}
+int Fibonacci(int n)
+{
+if( n == 1 || n == 2) 
+return 1;
+else
+return Fibonacci(n-1)+Fibonacci(n-2); 
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    printf("%d\n",Fibonacci(n));
+    return 0;
+}
