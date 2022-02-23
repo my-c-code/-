@@ -1,0 +1,30 @@
+//用递归的方式打印
+#include<stdio.h>
+int Strlen(char* string)
+{
+int count=0;
+while(*string != '\0')
+{
+count++;
+string++;
+}
+return count;
+}
+void reverse_string(char* string)
+{
+    int tmp=string[0];
+    int len=Strlen(string);
+    string[0]=string[len-1];
+    string[len-1]='\0';//将尾字符换给首字符将\0付给尾字符
+    if(Strlen(string+1)>=2)//给丁判定条件，每次移动一个位置
+        reverse_string(string+1);
+    string[len-1]=tmp;//最后将每次递归后的最后一个字符代替\0
+}
+
+int main()
+{
+char string[]="abcdef";
+    reverse_string(string);
+    printf("%s\n",string);
+    return 0;
+}
