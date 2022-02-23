@@ -1,0 +1,24 @@
+//编程实现：两个int（32位）整数m和n的二进制表达中，有多少个位（bit）不同
+#include<stdio.h>
+int differ_bit(int m,int n)
+{
+    int count=0;
+    int j=m^n;//取两个数的或，只要是1的就是不同
+
+    while(j)   
+    {
+            j=j&(j-1);//每次排除一个1
+            count++;//计数
+    }
+    return count;
+}
+int main()
+{
+	int count;
+	int m,n;
+	scanf("%d%d",&m,&n);
+	count=differ_bit(m,n);//函数主调用
+	printf("%d\n",count);
+	return 0;
+
+}
