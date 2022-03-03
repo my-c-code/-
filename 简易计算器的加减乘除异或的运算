@@ -1,0 +1,113 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+
+int Add(int x,int y)
+{
+    return x+y;
+}//加法
+int Sub(int x,int y)
+{
+    return x-y;
+}//减法
+int Mul(int x,int y)
+{
+    return x*y;
+}//乘法
+int Div(int x,int y)
+{
+    return x/y;
+}//除法
+int Xro(int x,int y)
+{
+    return x^y;
+}//异或
+
+void menu()
+{
+    printf("-------------------------------\n");
+    printf("--    1 加法     2 减法      --\n");
+    printf("--    3 乘法     4 除法      --\n");
+    printf("--    5 异或     0 exit      --\n");
+    printf("-------------------------------\n");
+    
+}
+void test()
+{
+    int x=0;
+    int y=0;
+    int input=0;
+    int ( * parr[] )(int,int)={0,Add,Sub,Mul,Div,Xro};
+    //定义一个函数指针数组，parr是一个函数指针数组，指向包含的6个元素，每个元素的类型是int
+    //下标与选择菜单一致故首元素定义‘0’
+    do
+    {
+       
+        //菜单
+        menu();
+        printf("请选择:>\n");
+        scanf("%d",&input);
+
+        if(input==0)
+        {
+            printf("程序结束\n");
+        }
+        else if(input>0 && input<6)
+        {
+            printf("请输入计算的操作数\n");
+            scanf("%d%d",&x,&y);
+            printf("%d\n",parr[input](x,y));
+            //注意下标
+           
+        }
+        else
+        {
+            printf("输入错误\n");
+            
+        }
+    //    比较繁杂优化上
+    //    switch(input)
+    //    {
+    //        case 1:
+    //            printf("请输入计算的操作数\n");
+    //            scanf("%d%d",&x,&y);
+    //            printf("%d\n",Add(x,y));
+    //            break;
+    //        case 2:
+    //            printf("请输入计算的操作数\n");
+    //            scanf("%d%d",&x,&y);
+    //            printf("%d\n",Sub(x,y));
+    //            
+    //            break;
+    //        case 3:
+    //            printf("请输入计算的操作数\n");
+    //            scanf("%d%d",&x,&y);
+    //            printf("%d\n",Mul(x,y));
+
+    //            break;
+    //        case 4:
+    //            printf("请输入计算的操作数\n");
+    //            scanf("%d%d",&x,&y);
+    //            printf("%d\n",Div(x,y));
+
+    //            break;
+    //        case 5:
+    //            printf("请输入计算的操作数\n");
+    //            scanf("%d%d",&x,&y);
+    //            printf("%d\n",Xro(x,y));
+    //            
+    //            break;
+    //        case 0:
+    //            printf("退出程序\n");
+    //            break;
+    //        default:
+    //            printf("输入错误\n");
+    //            break;
+
+    //    }
+    }while(input);
+}
+int main()
+{
+    test();
+    return 0;
+}
