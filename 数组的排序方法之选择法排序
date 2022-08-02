@@ -1,0 +1,46 @@
+//选择排序法找出数组中的最小或最大值，将这个数组的元素与前面没有交换的元素进行互换
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int i,j;
+	int arr[10]={0};
+	int temp;
+	int n;
+	printf("为元素赋值\n");
+	for(i=0;i<10;i++)
+	{
+		printf("arr[%d]=",i);
+		scanf("%d",&arr[i]);
+	}
+	//排序从小到大
+	for(i=0;i<9;i++)
+	{
+		//设定初始最小值
+		temp=arr[i];
+		//记录元素位置
+		n=i;
+		//寻找最小值
+		//j=i+1，是在找arr[i]后面元素的最小值
+		for(j=i+1;j<10;j++)
+		{
+			//判断是否为最小值
+			if(arr[j]<temp)
+			{
+				temp=arr[j];
+				n=j;
+			}
+		}
+		//交换两个元素的值
+		arr[n]=arr[i];
+		arr[i]=temp;
+	}
+	//显示最后结果
+	for(i=0;i<10;i++)
+	{
+		printf("%d\t",arr[i]);
+		if(i==4)
+			printf("\n");
+	}
+	return 0;
+}
