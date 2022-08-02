@@ -1,0 +1,37 @@
+//交换法排序是将每一位数与后面的所有数进行比较，若符合则交换数据
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int i,j;
+	int arr[10]={0};
+	int temp;
+	printf("为元素赋值\n");
+	for(i=0;i<10;i++)
+	{
+		printf("arr[%d]=",i);
+		scanf("%d",&arr[i]);
+	}
+	//排序
+	for(i=0;i<9;i++)
+	{
+		for(j=i+1;j<10;j++)
+		{
+			//比较寻找相符的元素
+			if(arr[j]<arr[i])
+			{
+				//符合后交换位置得最小值
+				temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+			}
+		}
+	}
+	for(i=0;i<10;i++)
+	{
+		printf("%d\t",arr[i]);
+		if(i==4)
+			printf("\n");
+	}
+	return 0;
+}
