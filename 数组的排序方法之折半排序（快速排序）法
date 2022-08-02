@@ -1,0 +1,53 @@
+//折半法排序选择一个中间值，然后将比中间值小的放在左边大放在右边
+//从两边开始找找到一对后进行交换
+//在递归
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//排序
+void Sortrun(int left,int right,int arr[])
+{
+	int i,j,middle,tmp;
+	i=left;
+	j=right;
+	middle=arr[(left+right)/2];//中间值
+	do
+	{
+		//找出左边往右比中间值大的数
+		while((i<right)&&(arr[i]<middle))
+			i++;
+		//找出右边往左比中间值小的数
+		while((j>left)&&(arr[j]>middle))
+			j--;
+		//找到一对值一个在左边比中间之大一个在右边比中间值小
+		if(i<=j)
+		{
+			//交换
+			tmp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=tmp;
+			i++;
+			j--;
+			//循环限制条件
+		}
+	}while(i<=j);
+	//递归左边半边
+	if(left<j)
+		Sortrun(left,j,arr);
+	//递归右半边
+	if(right>i)
+		Sortrun(i,right,arr);
+}
+int main()
+{
+	int i;
+	int arr[10]={9,0,8,7,5,6,3,4,1,2};
+	//排序从小到大
+	Sortrun(0,9,arr);
+	for(i=0;i<10;i++)
+	{
+		printf("%d\t",arr[i]);
+		if(i==4)
+			printf("\n");
+	}
+	return 0;
+}
