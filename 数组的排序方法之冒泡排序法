@@ -1,0 +1,41 @@
+//冒泡排序法将数组中相邻的两个元素比较，较小的数排在较大的数的前面
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int i,j;
+	int arr[10];
+	int temp;
+	printf("为元素赋值\n");
+	for(i=0;i<10;i++)
+	{
+		printf("arr[%d]=",i);
+		scanf("%d",&arr[i]);
+	}
+	//排序从小到大
+	//外层循环次数
+	for(i=1;i<10;i++)
+	{
+		//内层为2-10元素
+		//每次循环出一个最小值，比到最小值的位置就不必比了
+		for(j=9;j>=i;j--)
+		{
+			//相邻两个元素比较
+			if(arr[j]<arr[j-1])
+			{
+				//最小值交换
+				temp=arr[j];
+				arr[j]=arr[j-1];
+				arr[j-1]=temp;
+			}
+		}
+	}
+	//显示排序后的结果
+	for(i=0;i<10;i++)
+	{
+		printf("%d\t",arr[i]);
+		if(i==4)
+			printf("\n");
+	}
+	return 0;
+}
