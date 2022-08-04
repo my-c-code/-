@@ -1,0 +1,77 @@
+//字符串的解密和加密
+//eg：输入密码时显示的都是其它字符
+//分析 1菜单选择功能无限循环（加密·解密·退出）
+//2加密对原密码进行改动，解密变回原来的密码
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+void menu()
+{
+	printf("----------------------\n");
+	printf("--1 加密 2解密 0退出--\n");
+	printf("----------------------\n");
+}
+void Cryptgraph(int count,char *code,char *password)
+{
+	int i=0;
+	//进行加密
+	for(i=0;i<count;i++)
+	{
+		//设置加密的明文
+		password[i]=code[i]+i+5;
+	}
+	//设置结束标志
+	password[i]=0;
+	//将加密的明文显示
+	printf("加密后的明文为：%-26s\n",password);
+}
+void Text(int count,char *code,char *password)
+{
+	int i=0;
+	//还原解密
+	for(i=0;i<count;i++)
+	{
+		code[i]=password[i]-i-5;
+	}
+	//同样结束标志
+	code[i]=0;
+	//显示明文
+	printf("解密后的明文为：%-26s\n",code);
+
+}
+int main()
+{
+	int n,count;//用户选择的功能
+	char code[128]={0};
+	char password[128]={0};
+	printf("请输入你要加密的明文\n");
+	scanf("%s",&code);
+	count=strlen(code);
+	do
+	{
+		//菜单提示
+		menu();
+		//用户输入功能
+		printf("请选择所需功能\n");
+		scanf("%d",&n);
+		getchar();
+		switch(n)
+		{
+			case 1:
+				//加密
+				Cryptgraph(count,code,password);
+				break;
+			case 2:
+				//解密
+				Text(count,code,password);
+			case 0:
+				//退出
+				printf("退出程序\n");
+				break;
+			default:
+				printf("输入错误\n");
+				break;
+		}
+	}while(n);
+	return 0;
+}
