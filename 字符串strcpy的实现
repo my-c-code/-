@@ -1,0 +1,17 @@
+//不使用c中函数，实现字符串的复制
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int arr[20],cpy[20];
+	int i,n;
+	printf("请输入字符串\n");
+	scanf("%s",&arr);
+	for(i=0;i<20;i++)
+	{
+		cpy[i]=arr[i];
+	}
+	printf("复制的字符串cpy[20]:%s\n",cpy);
+	return 0;
+
+}
