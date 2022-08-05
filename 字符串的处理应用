@@ -1,0 +1,106 @@
+//字符串处理函数的整合
+//包括字符串复制strcpy字符串的连接strcat字符串的比较strcmp
+//字符串的大小写转换strupr·strlwr字符串的长度获取strlen
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>//字符串所需的头文件
+#pragma warning(disable:4996)
+
+void menu()
+{
+	printf("----------------------\n");
+	printf("--1复制        2比较--\n");
+	printf("--3转换大小写  0退出--\n");
+	printf("----------------------\n");
+}
+
+void Strcpy(char copy[],char arr[])
+{
+	
+	//将字符串拷贝
+	strcpy(copy,arr);
+	printf("%s\n",copy);
+}
+void Strcmp(char cmp[],char arr[])
+{
+	
+	int ret;
+	
+	ret=strcmp(cmp,arr);
+	if(ret==0)
+	{
+		printf("两者相等\n");
+	}
+	else if(ret==1)
+	{
+		printf("cmp[]比arr[]大\n");
+	}
+	else
+	{
+		printf("cmp[]比arr[]小\n");
+	}
+}
+void Struplw(char copy[],char arr[])
+{
+	int ret=0;
+	Strcpy(copy,arr);
+	printf("输入你的选择\n");
+	scanf("%d",&ret);
+	//大写转换
+	if(ret==1)
+	{
+		strupr(copy);
+		printf("大写为%s\n",copy);
+	}
+	else if(ret==2)
+	{
+		//小写转换
+		strlwr(copy);
+		printf("小写为%s\n",copy);
+	}
+	else
+	{
+		printf("输入错误，重新选择\n");
+	}
+}
+
+int main()
+{
+	int n;//功能选项
+	int i=0;
+	char copy[128],arr[128],cmp[128];
+	printf("请输入源字符串\n");
+	scanf("%s",&arr);
+	do
+	{
+		//菜单提示
+		menu();
+		printf("请输入你所需要的功能\n");
+		scanf("%d",&n);
+		switch(n)
+		{
+			case 1:
+				//拓展利用复制可以不改变原数组
+				Strcpy(copy,arr);
+				break;
+			case 2:
+				//注意栈的摧毁与越界
+				printf("请输入要比较的字符\n");
+				scanf("%s",&cmp);
+				//比较，利用比较可以实现密码确认/控制信号等
+				Strcmp(cmp,arr);
+				break;
+			case 3:
+				//大小写转换
+				Struplw(copy,arr);
+				break;
+			case 0:
+				printf("退出\n");
+				break;
+			default:
+				printf("输入错误\n");
+				break;
+		}
+	}while(n);
+	return 0;
+}
