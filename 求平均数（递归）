@@ -1,0 +1,30 @@
+//定义一个一维数组存放10个元素，设计函数求平均值
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int Aee(int *Score,int n)
+{
+	if(n==0)
+		return Score[n];
+	else
+		return (Score[n-1]+(n-1)*Aee(Score,n-1))/n;
+	
+}
+int main()
+{
+	int Score[100];
+	int ret,i;
+	int n=0;
+	printf("请输入学生人数\n");
+	scanf("%d",&n);
+	printf("请输入十个学生的成绩\n");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&Score[i]);
+	}
+	
+	//求平均值
+	ret=Aee(Score,n);
+	printf("平均成绩为：%d\n",ret);
+	return 0;
+
+}
