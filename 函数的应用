@@ -1,0 +1,50 @@
+//函数的应用包括abs,labs,fabs(绝对值),sin,cos,tan(正弦，余弦，正切)
+//isalpha,isdigit,isalnum(检测字母，数字，字母和数字)
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+void Math()
+{
+	int i;
+	double d;
+	long l;
+	i=-1234;
+	d=-1.34243;
+	l=-23434;
+	//显示绝对值
+	printf("|i|=%d,|d|=%lf,|l|=%ld\n",abs(i),fabs(d),labs(l));
+	
+}
+void Triangle()
+{
+	double s,c,t;
+	s=0.5;
+	c=0.5;
+	t=0.5;
+	printf("sin s=%lf,cos c=%lf,tan t=%lf\n",sin(s),cos(c),tan(t));
+}
+void Detection()
+{
+	char a;
+	printf("输入字符\n");
+	scanf("%c",&a);
+	if(isalpha(a))
+		printf("你输入的是字母%c：\n",a);
+	if(isdigit(a))
+		printf("你输入的是数字%c:\n",a);
+	if(isalnum(a))
+		printf("你输入的是字母或者数字：%c\n",a);
+	else
+		printf("你输入的既不是字母也不是数字%c",a);
+}
+int main()
+{
+	//绝对值abs,fabs,labs应用
+	Math();
+	//三角函数
+	Triangle();
+	//检测函数
+	Detection();
+	return 0;
+}
