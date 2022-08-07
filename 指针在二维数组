@@ -1,0 +1,53 @@
+//指针在二维数组中的写法
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int arr[3][5],b[3][5],*p,i,j;
+	p=b[0];//p为arr[3][5]的首地址
+	for(i=0;i<3;i++)
+		//外层为行数
+	{
+		for(j=0;j<5;j++)
+		{
+			//内层为列数
+			//表示每层列数
+			scanf("%d",arr[i]+j);
+		}
+	}
+	//第2种
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			scanf("%d",p++);
+		}
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%d",arr[i][j]);
+		}
+		printf("\n");
+
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%d",p++);
+		}
+		printf("\n");
+
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%d",*(arr[i]+j));
+		}
+		printf("\n");
+	}
+	return 0;
+}
