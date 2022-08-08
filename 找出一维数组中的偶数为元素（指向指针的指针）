@@ -1,0 +1,40 @@
+//利用指向指针的指针找偶数位
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int arr[8],*p1,**p2,i;
+	/*printf("输入数组\n");
+	for(i=0;i<8;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	p1=arr;
+	p2=&p1;
+	printf("偶数位为：\n");
+	for(i=0;i<8;i++)
+	{
+		if(*(*p2+i)%2==0)
+		{
+			printf("%d\t",*(*p2+i));
+		}
+	}*/
+	printf("\n");
+	//方法2
+	printf("输入数组元素\n");
+	for(p1=arr;p1-arr<8;p1++)
+	{
+		p2=&p1;
+		scanf("%d",*p2);
+	}
+	//显示
+	printf("偶数为元素为\n");
+	for(p1=arr;p1-arr<8;p1++)
+	{
+		
+		p2=&p1;
+		if((**p2)%2==0)
+		printf("%d\t",**p2);
+	}
+	return 0;
+}
