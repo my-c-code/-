@@ -3,6 +3,7 @@
 #include<stdio.h>
 int main ()
 {
+	char **p;
 	char *month[]=
 	{
 		"January",
@@ -23,6 +24,13 @@ int main ()
 	for(i=0;i<12;i++)
 	{
 		printf("%d月份为%s\n",i+1,month[i]);
+	}
+	printf("\n");
+	//指向指针的数组
+	for(i=0;i<12;i++)
+	{
+		p=month+i;
+		printf("%d月份为%s\n",i+1,*p);
 	}
 	return 0;
 }
