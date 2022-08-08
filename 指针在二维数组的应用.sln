@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "指针在二维数组的应用", "指针在二维数组的应用\指针在二维数组的应用.vcxproj", "{1E333851-5EE8-4EAA-9BEF-E15FED1E8DD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E333851-5EE8-4EAA-9BEF-E15FED1E8DD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1E333851-5EE8-4EAA-9BEF-E15FED1E8DD5}.Debug|Win32.Build.0 = Debug|Win32
+		{1E333851-5EE8-4EAA-9BEF-E15FED1E8DD5}.Release|Win32.ActiveCfg = Release|Win32
+		{1E333851-5EE8-4EAA-9BEF-E15FED1E8DD5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
