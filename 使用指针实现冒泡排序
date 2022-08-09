@@ -1,0 +1,48 @@
+//冒泡排序法的基本思想：如果对一个n的数进行排序
+//则要进行n-1轮进行比较，在第一轮比较中要进行n-1次两两比较
+//在第j轮要进行n-j次两两比较
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+void Orfer(int *p,int n)
+{
+	int i,j,tmp;
+	//外层多少次循环
+	for(i=0;i<n-1;i++)
+	{
+		//内层每次循环有多少个步
+		for(j=0;j<n-1-i;j++)
+		{
+			if(*(p+j)>*(p+j+1))
+				//如果每层内循环数第j个数与第j+1个数进行比较
+			{
+				tmp=*(p+j);
+				*(p+j)=*(p+j+1);
+				*(p+j+1)=tmp;
+			}
+		}
+	}
+	printf("排序后的数列为：\n");
+	for(i=0;i<n;i++)
+	{
+		printf("%d\t",*(p+i));
+		if((i%5==0)&&(i!=0))
+			printf("\n");
+
+	}
+}
+int main()
+{
+	int arr[128];
+	int n,i,*p;
+	p=arr;
+	//输入数组及其个数
+	printf("请输入个数n：");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",a+i);
+	}
+	//排序
+	Orfer(p,n);
+	return 0;
+}
