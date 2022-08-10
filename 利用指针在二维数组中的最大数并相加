@@ -1,0 +1,47 @@
+//利用指针找出二维数组中的最大数并相加
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//定义一个列数常量,方便更改
+#define N 3
+void maxadd(int (*p)[N],int n)
+{
+	int i,j,value;
+	int sum=0;
+	
+	for(i=0;i<n;i++)
+	{
+		value=*(*(p+i));
+		for(j=0;j<N;j++)
+		{
+			if(*(*(p+i)+j)>value)
+			{
+				value=*(*(p+i)+j);
+			}
+
+		}
+		printf("第%d行的最大值为：%3d\n",i+1,value);
+		sum+=value;
+	}
+	printf("\n");
+	printf("最大值相加的和为%d\n",sum);
+}
+int main()
+{
+	int arr[3][N];
+	int(*p)[N];
+	int i,j;
+	//或者p=&arr[0]
+	p=arr;
+	//输入数组元素
+	printf("输入数组元素\n");
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<N;j++)
+		{
+			scanf("%d",&arr[i][j]);
+		}
+	}
+	//找出最大值并相加
+	maxadd(p,3);
+	return 0;
+}
