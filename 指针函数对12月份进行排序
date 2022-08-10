@@ -1,0 +1,55 @@
+//利用指针函数对12月份进行排序
+#define _CRT_SECURE_NO_WARNINGS
+//利用指针数组输出12月份
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+void sort(char *month[],int n)
+{
+	int i,j;
+	char *tmp;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			//比较相邻的两个字符若第一个大于第二个则交换
+			if(strcmp(month[i],month[j])>0)
+			{
+				tmp=month[i];
+				month[i]=month[j];
+				month[j]=tmp;
+			}
+		}
+
+	}
+}
+int main ()
+{
+	int i;
+	int n=12;
+	char **p;
+	char *month[]=
+	{
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	};
+	p=month;
+	//p为指向指针的指针
+	//排序
+	sort(p,n);
+	for(i=0;i<n;i++)
+	{
+		printf("%s\n",month[i]);
+	}
+	return 0;
+}
