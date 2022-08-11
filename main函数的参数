@@ -1,0 +1,13 @@
+//main函数内的参数
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//包含一个整型和一个指针数组
+//argc为参数个数，argv为eg：d:\debug\1 eee  eew
+int main(int argc,int *argv[])
+{
+	printf("目录的参数\n");
+	printf("命令符为\n");
+	printf("%s\n",*argv);
+	printf("参数个数为\n");
+	printf("%d\n",argc);
+}
