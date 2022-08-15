@@ -1,0 +1,77 @@
+//创建链表并输出
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+int count;								//表示长度
+//定义结构体的信息和下一个节点
+struct Student
+{
+	char arr[20];						//名字
+	int number;							//学号
+	struct Student*pnext;				//指向下一个节点
+};
+struct Student*Create()
+{
+	struct Student *pHead=NULL;			//初始化链头指向为空
+	struct Student *pNew,*pend;			
+	count=0;							//初始化长度
+	pNew=pend=(struct Student*)malloc(sizeof(struct Student));
+										//指向开辟的地址
+	printf("输入第一个学生信息\n");		//第一个节点
+	scanf("%s",&pNew->arr);
+	scanf("%d",&pNew->number);
+	while(pNew->number!=0)
+	{
+		
+		count++;						//节点增加
+		if(count==1)
+		//当节点为1时则第一次加入节点
+		//新节点是首节点也是最后一个
+		{
+			pNew->pnext=pHead;			//建立链使得指向为空
+			pend=pNew;					//新节点与最后节点相同
+			pHead=pNew;					//第一次新节点为首节点
+		}
+		else
+		//若链表中已有节点
+		//让新节点指针指向为空
+		//最后一个节点的指针指向新节点
+		//pend指针指向最后一个节点
+		{
+			pNew->pnext=NULL;			//使新节点指向为空
+			pend->pnext=pNew;			//将最后一个节点指向新节点
+			pend=pNew;					//最后的一个节点
+
+		}
+		pNew=(struct Student*)malloc(sizeof(struct Student));
+										//再次为新节点分配空间
+		scanf("%s",&pNew->arr);
+		scanf("%d",&pNew->number);
+	}		
+	free(pNew);							//多余的空间释放
+	return pHead;
+}
+void Print(struct Student *pHead)
+{
+	struct Student *pTemp=NULL;				//临时节点使用操作
+	int index=1;						//节点的序号
+	printf("目录有%d个信息\n",count);
+	printf("\n");
+	pHead=pTemp;
+	while(pTemp!=NULL)
+	{
+		printf("序号%d\n",index);
+		printf("姓名%s\n",pTemp->arr);
+		printf("学号%d\n",pTemp->number);
+		printf("\n");
+		index++;
+		pTemp->pnext=pTemp;				//将指针临时移动到下一个节点
+	}
+}
+int main()
+{
+	struct Student*pHead;				//头节点
+	pHead=Create();						//创建节点
+	Print(pHead);						//显示
+	return 0;
+}
