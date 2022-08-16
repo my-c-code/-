@@ -20,7 +20,7 @@ struct Student*Create()
 	printf("输入第一个学生信息\n");		//第一个节点
 	scanf("%s",&pNew->arr);
 	scanf("%d",&pNew->number);
-	while(pNew->number!=0)
+	while((pNew->number!=0)&&(pNew->arr!='\0'))
 	{
 		
 		count++;						//节点增加
@@ -57,7 +57,7 @@ void Print(struct Student *pHead)
 	int index=1;						//节点的序号
 	printf("目录有%d个信息\n",count);
 	printf("\n");
-	pHead=pTemp;
+	pTemp=pHead;
 	while(pTemp!=NULL)
 	{
 		printf("序号%d\n",index);
@@ -65,7 +65,7 @@ void Print(struct Student *pHead)
 		printf("学号%d\n",pTemp->number);
 		printf("\n");
 		index++;
-		pTemp->pnext=pTemp;				//将指针临时移动到下一个节点
+		pTemp=pTemp->pnext;				//将指针临时移动到下一个节点
 	}
 }
 int main()
