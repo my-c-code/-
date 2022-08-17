@@ -1,0 +1,48 @@
+//假设有三个候选人，每次输入都要选择的候选人姓名，最后输出每个人想要的结果
+//分析3个备选人，每个人包含姓名和票数，结构体数组进行输出
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+//定义备选人姓名和票数
+typedef struct Peo 
+{
+	//姓名
+	char name[20];
+	//票数
+	int count;
+}Pro;
+int main()
+{
+	int i,j;
+	int n=0;
+	char name[20];
+	Pro peo[3]={{"李一",0},{"赵二",0},{"张三",0}};
+	printf("投票总人数：");
+	//输入投票人数
+	scanf("%d",&n);
+
+	//外层投票次数
+	for(i=0;i<n;i++)
+	{
+			//输入你要投票的名字
+		printf("输入你要投票的名字:");
+		scanf("%s",&name);
+		//内层被投票人数
+		for(j=0;j<3;j++)
+		{
+			if(strcmp(peo[j].name,name)==0)
+			{
+				peo[j].count++;
+			}
+		}
+		
+	}
+	for(j=0;j<3;j++)
+	{
+		printf("姓名：%s\t",peo[j].name);
+		printf("票数：%d\t",peo[j].count);
+		printf("\n");
+	}
+
+	return 0;
+}
