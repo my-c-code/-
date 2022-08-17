@@ -1,0 +1,31 @@
+//枚举类型的应用
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//定义枚举类型
+enum Color
+{
+	Red=1,
+	Bule,
+	Green
+}color;
+int main()
+{
+	int i;
+	scanf("%d",&i);
+	switch(i)
+	{
+		case Red:
+			printf("是红色\n");
+			break;
+		case Bule:
+			printf("是蓝色\n");
+			break;
+		case Green:
+			printf("是绿色\n");
+			break;
+		default:
+			printf("输入错误\n");
+			break;
+	}
+	return 0;
+}
