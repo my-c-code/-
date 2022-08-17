@@ -1,0 +1,58 @@
+//共用体的应用
+#define _CRT_SECURE_NO_WARNINGS
+#include<string.h>
+#include<stdio.h>
+//定义一个共用体
+struct Peo
+{
+	char name[20];
+	char role[20];
+	union Class
+	{
+		char classroom[20];
+		char office[20];
+	}vocation;
+};
+int main()
+{
+	struct Peo u[5];
+	int i=0;
+	for(i=0;i<5;i++)
+	{
+		printf("姓名:\n");
+		scanf("%s",&u[i].name);
+		printf("角色:\n");
+		scanf("%s",&u[i].role);
+		if(strcmp(u[i].role,"student")==0)
+		{
+			printf("输入工号：\n");
+			scanf("%s",&u[i].vocation.classroom);
+		}
+		else if(strcmp(u[i].role,"teacher")==0)
+		{
+			printf("输入工号\n");
+			scanf("%s",&u[i].vocation.office);
+		}
+		else
+			printf("输入错误\n");
+	}
+	for(i=0;i<5;i++)
+	{
+		if(strcmp(u[i].role,"student")==0)
+		{
+			printf("姓名：%s\t",u[i].name);
+			printf("角色：%s\t",u[i].role);
+			printf("班级：%s\t",u[i].vocation.classroom);
+			printf("\n");
+		}
+		else if(strcmp(u[i].role,"teacher")==0)
+		{
+			printf("姓名：%s\t",u[i].name);
+			printf("角色：%s\t",u[i].role);
+			printf("班级：%s\t",u[i].vocation.office);
+			printf("\n");
+		}
+
+	}
+	return 0;
+}
