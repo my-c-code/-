@@ -1,0 +1,161 @@
+//设计一个程序，可以统计学校中所有人员（学生和老师）的数据，学生的数据包括身份姓名编号性别和班级
+//老师的数据包括身份姓名编号性别和职务。
+//分析统计数据结构体，只有一个数据不相同共用体
+//程序功能存储和显示搜索
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int count;
+//定义数据包
+typedef union type
+{
+    char duty[20];
+    char classroom[20];
+}T;
+typedef struct Data
+{
+    char name[20];
+    char sex[20];
+    char identity[20];
+    int num;
+    T s;
+    // 加入链节点
+    struct Data* pNext;
+}D;
+D *Add(D *pHead) //修改
+{
+    int i = 0, n = 1;
+    D* pNew;
+    D* pEnd;
+    count = 0;
+    //设置起点
+    while (1)
+    {
+        pNew = (D*)malloc(sizeof(D)); //pNew = pEnd = (D*)malloc(sizeof(D));
+        pNew->pNext = NULL;  //修改
+        printf("输入你要录入的信息\n");
+        printf("姓名:");
+        scanf("%s", pNew->name); //scanf("%s", &pNew->name);
+        getchar();
+        printf("性别:");
+        scanf("%s", pNew->sex); //scanf("%s", &pNew->sex);
+        getchar();
+        printf("身份:");
+        printf("请输入“学生”或者“老师”\n");
+        scanf("%s", pNew->identity); //scanf("%s", &pNew->identity);
+        getchar();
+        printf("编号:");
+        scanf("%d", &pNew->num);  //scanf("%s", &pNew->sex);
+        getchar();
+        if (strcmp(pNew->identity, "学生") == 0)
+        {
+            printf("输入班级：");
+            scanf("%s", pNew->s.classroom); //scanf("%s", &pNew->s.classroom);
+        }
+        else if (strcmp(pNew->identity, "老师") == 0)
+        {
+            printf("输入职务:");
+            scanf("%s", pNew->s.duty); //scanf("%s", &pNew->s.duty);
+        }
+        count++;
+        if (count == 1)//判断是否为第一次存入
+        {
+            //首节点与为节点相同
+            //pNew->pNext = pHead; 修改
+            pHead = pNew;
+            pEnd = pNew;
+        }
+        else
+        {
+            //已存入资料将指向新录入的节点作为尾节点并指向NULL
+            pEnd->pNext = pNew;
+            pEnd = pNew;
+        }
+        printf("非0继续，0.退出\n");
+        printf("输入你选的功能\n");
+        scanf("%d", &n);
+        if (n == 0)
+        {
+            printf("退出\n");
+            break;
+        }
+            //getchar();
+            //pNew = (D*)malloc(sizeof(D));
+            //printf("输入你要录入的信息\n");
+            //printf("姓名:");
+            //scanf("%s", &pNew->name);
+            //getchar();
+            //printf("性别:");
+            //scanf("%s", &pNew->sex);
+            //getchar();
+            //printf("身份:\n");
+            //printf("请输入“学生”或者“老诗”\n");
+ 
+            //scanf("%s", &pNew->identity);
+            //getchar();
+            //printf("编号:");
+            //scanf("%s", &pNew->sex);
+            //getchar();
+            //if (strcmp(pNew->identity, "学生") == 0)
+            //{
+            //    printf("输入班级：");
+            //    scanf("%s", &pNew->s.classroom);
+            //}
+            //else if (strcmp(pNew->identity, "老诗") == 0)
+            //{
+            //    printf("输入职务:");
+            //    scanf("%s", &pNew->s.duty);
+            //}
+            //getchar();
+ 
+            //}
+    }
+    //free(pNew);
+    return pHead;
+}
+//显示信息
+void Printf(D* pHead)
+{
+    D* pTemp = NULL;
+    int index = 1;
+    pTemp = pHead;
+    printf("共有信息：%d\n", count);
+    while (pTemp != NULL)
+    {
+        printf("序号：%d\t", index);
+        printf("姓名：%s\t", pTemp->name);
+        printf("性别：%s\t", pTemp->sex);
+        printf("编号：%d\t", pTemp->num);
+        printf("身份:%s\t", pTemp->identity);
+        if (strcmp(pTemp->identity, "学生") == 0)
+            printf("班号:%s\n", pTemp->s.classroom);
+        else if (strcmp(pTemp->identity, "老师") == 0)
+            printf("职务:%s\n", pTemp->s.duty);
+        index++;
+        pTemp = pTemp->pNext;
+    }
+}
+int main()
+{
+    int i;
+    //定义人数
+    //D arr[100]; 这是定义了一个数组
+    D* pHead = NULL;
+    //pHead = arr; //让指针指向数组 arr？
+    do
+    {
+        printf("1.录入,2显示，0退出\n");
+        printf("输入选择\n");
+        scanf("%d", &i);
+        getchar();
+        //录入
+        if (i == 1)
+            pHead = Add(pHead);
+        //显示
+        else if (i == 2)
+            Printf(pHead);
+        else
+            printf("输入错误\n");
+    } while (i);
+}
