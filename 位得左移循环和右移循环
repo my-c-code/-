@@ -1,0 +1,34 @@
+//位得得左移循环和右移循环
+//编程实现循环左移和右移输入一个八进制数，在屏幕中显示出来
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int left(unsigned a,int n)
+{
+	unsigned z;
+	z=(a>>(32-n))|(a<<n);
+	return z;
+}
+int right(unsigned a,int n)
+{
+	unsigned z;
+	z=(a<<(32-n))|(a<<n);
+	return z;
+}
+int main()
+{
+	unsigned a;
+	int n;
+	printf("请输入你要位移的数字\n");
+	scanf("%o",&a);
+	printf("请输入你要移动的位数\n");
+	scanf("%d",&n);
+	//左移循环
+	printf("输出的结果为：%o\n",left(a,n));
+	printf("请输入你要位移的数字\n");
+	scanf("%o",&a);
+	printf("请输入你要移动的位数\n");
+	scanf("%d",&n);
+	//右移循环
+	printf("输出的结果为：%d\n",right(a,n));
+	return 0;
+}
