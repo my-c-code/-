@@ -1,0 +1,83 @@
+//由小写v组成的大V
+//v    v
+// v  v
+//	v
+#define _CRT_SECURE_NO_WARNINGS
+//第一种将看成3行5列1v（1，1）2v（5，1）。。。
+//#include<stdio.h>
+//int main ()
+//{
+//	int i,j;
+//	for(i=1;i<=3;i++)
+//	{
+//		for(j=1;j<=5;j++)
+//		{
+//			if(i==j)
+//			{
+//				printf("v");
+//			}
+//			else if(i+j==6)
+//			{
+//				printf("v");
+//				
+//			}
+//			else
+//			{
+//				printf(" ");
+//			}
+//			
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//任意列的小v组成的大V
+//根据上面的组成可变化为
+#include<stdio.h>
+int main ()
+{
+	int i,j;
+	int n=0;
+	int input;
+
+	//加入循环
+	do
+	{
+		printf("输入选项 0 | 非0数\n");
+		scanf("%d",&input);
+		getchar();
+		if(input==0)
+		{
+			printf("退出\n");
+		}
+		else
+		{
+			printf("输入行数n=:");
+			scanf("%d",&n);
+			getchar();
+			for(i=1;i<=n;i++)
+			//外层为行数，每行打印
+			{
+				for(j=0;j<=2*n-1;j++)
+				//内层循环列数，每行要打印的
+				{
+					if(i==j)
+					{
+						printf("v");
+					}
+					else if(i+j==2*n)
+					{
+						printf("v");
+					}
+					else
+					{
+						printf(" ");
+					}
+				}
+				//打印完一行之后换行
+				printf("\n");
+			}
+		}
+	}while(input);
+	return 0;
+}
