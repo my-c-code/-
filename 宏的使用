@@ -1,0 +1,82 @@
+//头文件
+//宏.h
+#define _CRT_SECURE_NO_WARNINGS
+//定义全局常量高度为10
+#define Height 10
+#define Long 10
+#define Width 10
+//定义带参数的宏定义
+#define Result(Long,Width,Height) ((Long)*(Width)*(Height)) 
+//定义包含的头文件
+#include<stdio.h>
+#include<stdio.h>
+#pragma once
+#define r 4
+#ifdef r
+#pragma message ("r hello i'm coming!!")
+#endif
+
+//定义两个结构体用于内存对其
+#pragma pack(1)
+struct S 
+{
+	char a;
+	short b;
+	char c;
+	int d;
+}s;
+struct V
+{
+	char a;
+	char b;
+	short c;
+	int d;
+}v;
+#pragma pack()
+
+//源文件 
+//宏定义.c
+//对宏定义的一些应用
+//宏定义的作用相当于给指定的字符串起一个别名
+//引用包含文件
+//使用#pragma
+#pragma message ("hello i'm coming!!")
+//#line 表示预定义宏名
+//用于显示_LINE_行号_FILE_文件名
+#line 30"宏定义.c"
+#include"宏.h"
+int main()
+{
+	printf("高度是%d\n",Height);
+	printf("长度是%d\n",Long);
+	printf("宽度是%d\n",Width);
+	printf("结果是%d\n",Result(Long,Width,Height));
+	printf("S大小为%d\n",sizeof(s));
+	printf("v大小为%d\n",sizeof(v));
+	printf("1.行号为：%d\n", __LINE__);
+	printf("2.日期为为：%s\n",__DATE__);
+	printf("3.时间为：%s\n",__TIME__);
+	printf("4.文件名为：%s\n",__FILE__);
+	//判断当前编译器是否为标准c其值为1
+#if __STDC__
+	printf("标准的c语言\n");
+
+#else
+	printf("不是标准的c语言\n");
+#endif
+#ifdef r
+	printf("%d\n",r);
+#else
+	printf("没有定义\n");
+#endif
+#undef r
+
+#ifndef r
+	printf("没有定义\n");
+#else
+	printf("已存在\n");
+#endif
+	
+	return 0;
+	
+}
