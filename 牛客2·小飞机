@@ -1,0 +1,22 @@
+//小飞机
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main ()
+{
+    int i=1;
+    while(i)
+    {
+       if(i<=2)
+            printf("     **     \n");
+        else if (2<i&&i<=4)
+            printf("************\n");            
+        else
+            printf("    *  *    \n");
+        i++;
+		//当i=7结束循环
+        if(i==7)
+            break;
+    }
+        return 0;
+           
+}
