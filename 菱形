@@ -1,0 +1,91 @@
+//打印菱形两种方法
+//    *
+//   ***
+//  *****
+//   ***
+//    *
+//第一种，分层打印，想象分上下两层分别打印（上2下3/上3下2）
+//上3层空格逐渐减少*逐渐增加下两层则相反
+//#define _CRT_SECURE_NO_WARNINGS
+//#include<stdio.h>
+//int main()
+//{
+//	int n;
+//	char ch;
+//	int i,j;
+//	printf("输入菱形的大小：");
+//	scanf("%d",&n);
+//	getchar();
+//	printf("输入菱形的样式：");
+//	scanf("%c",&ch);
+//	for(i=0;i<=n/2;i++)
+//	//先打印上3层，每层
+//	{
+//		for(j=n/2-i;j>0;j--)
+//		//打印出上三层每行的量，打印空格
+//		{
+//			printf(" ");
+//		}
+//		for(j=0;j<2*i+1;j++)
+//		//打印出上三层#号的量，打印#
+//		{
+//			printf("%c",ch);
+//		}
+//		//打印完每层后然后换行
+//		printf("\n");
+//	}
+//	for(i=1;i<=n-n/2;i++)
+//	//打印剩下的
+//	{
+//		for(j=1;j<=i;j++)
+//		//打印空格
+//		{
+//			printf(" ");
+//		}
+//		for(j=n-2*i;j>0;j--)
+//		{
+//			printf("%c",ch);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//第2种，坐标法打印
+//2
+//1
+//0
+//-1
+//-2
+//  -2 -1 0 1 2
+//找位置可以看到打印*的坐标（-2，0）（-1，-1）（-1，0）。。。（2，0）
+//|x|+|y|<=2
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int i,j;
+	int n;
+	char ch;
+	printf("输入菱形的大小：");
+	scanf("%d",&n);
+	getchar();
+	printf("输入菱形的样式：");
+	scanf("%c",&ch);
+	for(i=-n/2;i<=n/2;++i)
+	{
+		for(j=n/2;j>=-n/2;--j)
+		{
+			//先打印空格
+			if(fabs((double)i)+fabs((double)j)<= n/2)
+			{
+				printf("%c",ch);
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+	return 0;
+}
