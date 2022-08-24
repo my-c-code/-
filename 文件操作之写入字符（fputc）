@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<process.h>
+int main ()
+{
+	char ch;
+	//FILE是属于结构体类型
+	FILE*fp;
+	//FILE->文件
+	
+	if((fp=fopen("D:\\C语言\\文件操作\\exp01.txt","r+"))==NULL)
+	{
+		printf("打开文件失败\n");
+		// 终止程序
+		exit(0);
+	}	
+	//输入字符
+	do
+	{
+		ch=getchar();
+		fputc(ch,fp);
+	}while(ch!='#');
+	fclose(fp);
+	
+	return 0;
+}
