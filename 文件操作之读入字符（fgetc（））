@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<process.h>
+int main()
+{
+	FILE *fp;
+	char ch;
+	//打开文件
+	fp=fopen("D:\\11.txt","w+");
+	//读取文件
+	ch=fgetc(fp);
+	while(ch!=EOF)
+	{
+    //显示读取的字符
+		putchar(ch);
+		ch=fgetc(fp);
+	}
+	fclose(fp);
+	return 0;
+}
