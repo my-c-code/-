@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<process.h>
+int main()
+{
+	FILE *fp;
+	char arr[30];
+	//判断是否有文件
+	if((fp=fopen("D:\\1111.txt","w"))==NULL)
+	{
+		printf("打开文件失败\n");
+		exit(0);
+	}
+	//输入字符
+	gets(arr);
+	//写入文件显示出
+	fputs(arr,fp);
+	//关闭文件
+	fclose(fp);
+	return 0;
+}
