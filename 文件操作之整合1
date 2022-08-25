@@ -1,0 +1,70 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<process.h>
+int main()
+{
+	FILE *fp;
+	char arr[30]="hello";
+	char ch;
+	//判断是否有文件
+	if((fp=fopen("D:\\1111.txt","w"))==NULL)
+	{
+		printf("打开文件失败\n");
+		getchar();
+		exit(0);
+	}
+	do
+	{
+		ch=getchar();
+		//在文件中写入读取的字符
+		fputc(ch,fp);
+	}while(ch!='#');
+	fclose(fp);
+	fp=fopen("D:\\1111.txt","r");
+	ch=fgetc(fp);
+	while(ch!=EOF)
+	{
+    
+		putchar(ch);
+		//从文件中读取字符到编译器
+		ch=fgetc(fp);
+	}
+	fclose(fp);
+	printf("\n");
+	fp=fopen("D:\\1111.txt","a");
+	getchar();
+	//输入字符
+	gets(arr);
+	//写入文件显示出
+	fputs(arr,fp);
+	//关闭文件
+	fclose(fp);
+	fp=fopen("D:\\1111.txt","r");
+	//读取文件到编译器中
+	fgets(arr,sizeof(arr),fp);
+	printf("%s\n",arr);
+	//关闭文件
+	fclose(fp);
+	//打开文件准备写入
+	fp=fopen("D:\\1111.txt","a");	
+	//fprintf（文件类型指针，格式字符串，输出列表）
+	fseek(fp,sizeof(arr),0);
+	//以格式字符串的类型写入fp所指的磁盘文件中
+	fprintf(fp,"%s",arr);
+	fclose(fp);
+	fp=fopen("D:\\1111.txt","r");
+	//fscanf（文件类型指针，格式字符串，输出列表）
+	fscanf(fp,"%s",arr);
+	printf("%s\n",arr);
+	fclose(fp);
+	fp=NULL;
+	printf("\n");
+	fp=fopen("D:\\1111.txt","a");
+	fwrite(arr,sizeof(arr),1,fp);
+	fclose(fp);
+	fp=fopen("D:\\1111.txt","r");
+	fread(arr,sizeof(arr),1,fp);
+	fclose(fp);
+	fp=NULL;
+	return 0;
+}
