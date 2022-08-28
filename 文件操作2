@@ -1,0 +1,19 @@
+//文件操作标准输入输出流
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<errno.h>
+#include<string.h>
+int main()
+{
+	char arr[1024]={0};
+	FILE *pf=fopen("D:\\1111.txt","r+");
+	if(pf==NULL)
+	{
+		printf("%s\n",strerror(errno));
+		return 0;
+	}
+	fgets(arr,sizeof(arr),stdin);
+	fputs(arr,stdout);
+	fclose(pf);
+	return 0;
+}
