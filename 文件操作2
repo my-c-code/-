@@ -3,8 +3,14 @@
 #include<stdio.h>
 #include<errno.h>
 #include<string.h>
+typedef struct student
+{
+	char name[20];
+	int age;
+}S;
 int main()
 {
+	S s={0};
 	char arr[1024]={0};
 	FILE *pf=fopen("D:\\1111.txt","r+");
 	if(pf==NULL)
@@ -12,8 +18,12 @@ int main()
 		printf("%s\n",strerror(errno));
 		return 0;
 	}
-	fgets(arr,sizeof(arr),stdin);
-	fputs(arr,stdout);
+	/*fgets(arr,sizeof(arr),stdin);
+	fputs(arr,stdout);*/
+	
+	fscanf(stdin,"%s %d",s.name,&(s.age));
+	fprintf(stdout,"%s %d",s.name,s.age);
 	fclose(pf);
+
 	return 0;
 }
