@@ -1,0 +1,31 @@
+//有一个长方体，它的高已经给出，然后输入这个长方体的长和宽，通过输入的长和宽以及定义给的高度，计算出长方形的体积
+#define _CRT_SECURE_NO_WARNINGS 1
+//包含头文件
+#include<stdio.h>
+//定义高
+#define Height 10
+//定义计算函数
+int calculate(int Long, int Width);
+//进入主函数
+int main()
+{
+	//定义所要使用的变量
+	int x, y, result = 0;
+	//显示提示并且输入长和宽
+	printf(" 请输入长方体的长度为：\n");
+	scanf("%d",&x);
+	printf(" 请输入长方体的宽度为：\n");
+	scanf("%d", &y);
+	//计算体积带入函数
+	result = calculate(x, y);
+	//输出结果的值并结束
+	printf("长方体的体积为：%d\n",result);
+	return 0;
+}
+//接入计算函数
+int calculate(int x, int y)
+{
+	//定义临时变量将值传回去
+	int result = x * y * Height;
+	return result;
+}
